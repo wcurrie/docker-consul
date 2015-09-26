@@ -13,6 +13,8 @@ Can surely be improved.
     docker run -h agent-one -t gliderlabs/consul /bin/consul agent -data-dir /tmp/consul -config-dir /etc/consul.d
 * Make client join the server's cluster. 
     docker exec -it <agent-container> consul join <server-ip-address>
+* Try [weavescope](https://github.com/weaveworks/scope) in the same container. Seems like weavescope can cause veth's to not appear when containers are created.
+    
 
 ## License
 
