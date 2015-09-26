@@ -1,13 +1,10 @@
 #!/bin/bash
 . funcs.sh
 
-for who in {srv,agent}
+for id in $(list-consulates)
 do
-    for i in {1..3}
-    do
-        container=$who-$i
-        ip=$(dip $container)
-        echo $container $ip
-        export $who$i=$ip
-    done
+    name=$(docker inspect -f '{{.Name}}' $id | sed 's/^\///')
+    ip=$(dip $id)
+    echo $name $ip
+    export ${name/-/}=$ip
 done
