@@ -1,0 +1,17 @@
+
+function dip { 
+    docker inspect -f '{{ .NetworkSettings.IPAddress }}' $1
+}
+
+function dexec {
+    container=$1
+    shift
+    if [ $# -eq 0 ]
+    then
+        cmd=sh
+    else
+        cmd="$@"
+    fi
+
+    docker exec -it $container $cmd
+}
