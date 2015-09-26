@@ -15,3 +15,13 @@ function dexec {
 
     docker exec -it $container $cmd
 }
+
+function dm-iptables {
+    docker-machine ssh default "sudo /usr/local/sbin/iptables $@"
+}
+
+function start-client {
+    name=agent-$1
+    docker run --detach --name $name --hostname $name gliderlabs/consul-agent -retry-join $srv1
+}
+

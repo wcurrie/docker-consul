@@ -1,5 +1,5 @@
 #!/bin/bash
-. funcs
+. funcs.sh
 
 for who in {srv,agent}
 do
